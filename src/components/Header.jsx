@@ -23,7 +23,7 @@ function Header() {
           <ChakraLink color={"white"} as={Link} to="/products">
             Products
           </ChakraLink>
-          <ChakraLink color={"white"} as={Link} to="/blogs">
+          <ChakraLink color={"white"} as={Link} to="/blogs/1/">
             Blog
           </ChakraLink>
           <ChakraLink color={"white"} as={Link} to="/cart">
