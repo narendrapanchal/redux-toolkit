@@ -9,9 +9,11 @@ import ContactUs from '../pages/ContactUs';
 import Article from '../pages/Article';
 import Login from '../pages/login/Login';
 import { SignUp } from '../pages/login/SignUp';
+import Authentication from '../components/HOC/Authentication';
+import HasAuth from '../components/HOC/HasAuth';
 
 
-const fetchData= async(url)=>{
+export const fetchData= async(url)=>{
     const response=await fetch(url);
     return await response.json();
 }
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Home />,
+                element: <Authentication><Home /></Authentication>,
             },
             {
                 path: "/products",
@@ -79,11 +81,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/login",
-                element: <Login />
+                element:<HasAuth><Login /></HasAuth>
             },
             {
                 path: "/signup",
-                element: <SignUp />
+                element:<HasAuth><SignUp /></HasAuth>
             }
         ],
     },

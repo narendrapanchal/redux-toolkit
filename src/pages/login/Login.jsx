@@ -4,14 +4,19 @@ import { doSignInWithEmailAndPassword } from "../../context/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { notify } from "../../utils/helper";
 import { ToastContainer } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/slicers/authSlicer";
 
 function Login() {
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const signIn = async (email, password) => {
 		try {
 			await doSignInWithEmailAndPassword(email, password);
+			dispatch(login({email,password}));
+			notify("Logged In!");
 			navigate('/');
 		} catch (error) {
 			console.error("Error during login:", error);
@@ -22,7 +27,7 @@ function Login() {
 			} else if (error.code === 'auth/invalid-email') {
 				notify("Invalid email format.");
 			} else {
-				notify("Error")
+				notify("Invalid Credentials!")
 			}
 		}
 
