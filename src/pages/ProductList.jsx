@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProductList() {
+const ProductList=()=> {
   return (
     <div>
       ProductList

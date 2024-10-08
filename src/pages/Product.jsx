@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import ProductCard from '../components/ProductCard';
 
-function Product() {
+const  Product=()=> {
+    const [data,setData]=useState([]);
+    useEffect(()=>{
+        fetch("https://fakestoreapi.com/products").then((res)=>res.json()).then((data)=>{
+            setData(data)
+        }).catch((err)=>{
+            console.log(err.message);
+        })
+    },[])
   return (
-    <div>
-      Product
+    <div className='grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-x-3 gap-y-3'>
+      {data.map((product,index)=><ProductCard {...product} key={product.id}/>)}
     </div>
   )
 }
