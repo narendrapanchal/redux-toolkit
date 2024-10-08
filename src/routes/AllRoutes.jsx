@@ -7,12 +7,14 @@ import ProductWrapper from '../pages/ProductWrapper';
 
 
 const fetchData= async(url)=>{
-    console.log(url)
     const response=await fetch(url);
     return await response.json();
 }
+
 import Blogs from '../pages/Blogs';
 import ContactUs from '../pages/ContactUs';
+import Login from '../pages/login/Login';
+import { SignUp } from '../pages/login/SignUp';
 
 const router = createBrowserRouter([
     {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
             {
                 path: "/contact",
                 element: <ContactUs />
+            },
+            {
+                path: "/login",
+                element: <Login />
+            },
+            {
+                path: "/signup",
+                element: <SignUp />
             }
         ],
     },
