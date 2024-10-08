@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLoaderData, useParams } from 'react-router-dom';
 
 const Product = () => {
-    const [data, setData] = useState([]);
-    const { id } = useParams()
+    const data=useLoaderData();
     const [addToCart, setAddToCart] = useState(false)
-    useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json()).then((data) => {
-            setData(data);
-            console.log(JSON.stringify(data, null, 2));
-        }).catch((err) => {
-            console.log(err.message);
-        })
-    }, [])
     return (
         <div className='grid '>
             <div className='p-2 shadow-md flex gap-10'>

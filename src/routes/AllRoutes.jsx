@@ -4,7 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomeRoute from '../pages/HomeRoute';
 import Home from '../pages/Home';
 import ProductWrapper from '../pages/ProductWrapper';
-
+const fetchData= async(url)=>{
+    console.log(url)
+    const response=await fetch(url);
+    return await response.json();
+}
 const router = createBrowserRouter([
     {
         path: "/",
@@ -20,11 +24,13 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <ProductList />
+                        element: <ProductList />,
+                        loader:()=>fetchData('https://fakestoreapi.com/products')
                     },
                     {
                         path: ":id",
                         element: <Product />,
+                        loader: ({params}) => fetchData(`https://fakestoreapi.com/products/${params.id}`)
                     },
                 ],
             },
