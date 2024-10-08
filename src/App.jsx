@@ -1,11 +1,11 @@
 import './App.css'
-import Product from './pages/Product'
+import AllRoutes from './routes/AllRoutes'
 
 function App() {
 
   return (
     <>
-     <Product/>
+     <AllRoutes/>
     </>
   )
 }
