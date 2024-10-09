@@ -31,11 +31,16 @@ export const cartSlice = createSlice({
       state.items = temp;
     },
     handleCartDelete: (state, action) => {
-      console.log("handleCartDelete", action.payload);
       const items = state.items.filter(
         (item) => action.payload.id !== item.id
       );
-      localStorage.setItem("cart", JSON.stringify(cart));
+      if(items.length==0){
+        localStorage.removeItem("cart")
+
+      }else{
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
       state.items=items;
     },
   },
