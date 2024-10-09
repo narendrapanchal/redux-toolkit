@@ -22,6 +22,8 @@ export const authSlice = createSlice({
         }
     }
 });
-
+export const userstatus = (state) => {
+    return state.auth.loggedIn;
+  };
 export const { login, logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -4,10 +4,8 @@ import { cart, addToCart, handleCartUpdate, handleCartDelete } from '../store/sl
 
 function Cart() {
     const cartData = useSelector(cart);
-    console.log("cartData", cartData)
     const dispatch = useDispatch();
     function handleQuantity(quantity, id) {
-        // console.log(quantity,index)
         dispatch(handleCartUpdate({ id, quantity }))
     }
     const handleDelete = (id) => {
