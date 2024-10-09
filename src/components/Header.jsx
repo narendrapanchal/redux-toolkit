@@ -59,7 +59,7 @@ function Header() {
             size="sm"
             _hover={{ bg: "teal.500" }}
           >
-            <ChakraLink color="white" as={Link} to="/links">
+            <ChakraLink color="white" as={Link} to="/login">
               <Flex align="center">
                 <Box ml={1}>Log In</Box>
               </Flex>
