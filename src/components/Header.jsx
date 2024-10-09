@@ -11,7 +11,7 @@ function Header() {
   return (
     <Box bg="black" color="white" height='50px'
     >
-      <Flex px={12} py={10} align="center" justify="space-between" gap='20px'
+      <Flex  py={10} align="center" justify="space-between" gap='20px'className="container"
       >
         <Heading as="h1" size="lg"  fontSize={15}>
           <ChakraLink
@@ -28,9 +28,6 @@ function Header() {
           </ChakraLink>
           <ChakraLink color={"white"} as={Link} to="/cart">
             Cart 
-          </ChakraLink>
-          <ChakraLink color={"white"} as={Link} to="/contact">
-            Contact us
           </ChakraLink>
         </Stack>
       </Flex>

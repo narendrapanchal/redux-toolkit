@@ -13,7 +13,7 @@ const Blogs = () => {
     })();
   }, [id]);
   return (
-    <div>
+    <div className="container">
       {data?.data?.length > 0 &&
         data?.data?.map((blog) => <BlogCard {...blog} key={blog.id} />)}
       <div className="p-2 gap-1 flex justify-center">

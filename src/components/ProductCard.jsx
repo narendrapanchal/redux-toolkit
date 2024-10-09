@@ -5,7 +5,7 @@ const ProductCard = ({ id, title, price, image }) => {
   const [addToCart, setAddToCart] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className='p-2 py-4 shadow-md' onClick={() => {
+    <div className='p-2 py-4 shadow-md max-w-full' onClick={() => {
       navigate(`/products/${id}`)
     }} >
       <img src={image} alt={title} style={{ width: "250px", height: "250px" }} className='m-auto' />

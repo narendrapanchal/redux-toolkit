@@ -9,12 +9,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const HomeRoute = () => {
   return (
-    <>
+    <div className='layout'>
+    <div>
     <Header/>
     <ToastContainer />
     <Outlet/>
+    </div>
     <Footer/>
-    </>
+    </div>
   )
 }
 

@@ -4,3 +4,13 @@
   box-sizing: border-box;
   
 }
+.container{
+  max-width: 64rem;
+  margin: auto;
+}
+.layout{
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+  flex-direction: column;
+}

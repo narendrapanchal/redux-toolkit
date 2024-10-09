@@ -15,7 +15,7 @@ function Article() {
   }, [id]);
 
   return (
-    <div className="shadow-lg my-4 p-2  rounded">
+    <div className="shadow-lg my-4 p-2  rounded container">
       <h1 className="font-bold text-3xl text-left my-2">{data?.title}</h1>
       <p className="text-left mb-2">{data?.body}</p>
     </div>

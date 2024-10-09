@@ -8,10 +8,10 @@ import { FaLinkedin } from "react-icons/fa";
 
 export const Footer = () => {
 	return (
-		<Box backgroundColor="black" padding="50px 0" color="fff" position="relative">
+		<Box backgroundColor="black" padding="50px 0" color="fff" position="relative" >
 			<Box display="flex" alignItems="center" flexDirection="column" width="100%" maxWidth="1200px"
 				margin="0 auto" padding="0 20px"
-				justifyContent="center"
+				justifyContent="center"className="container"
 			>
 				<UnorderedList marginBottom="30px" gap="30px" listStyleType="none" display="flex" alignItems="center" justifyContent="center">
 					<ListItem cursor="pointer" fontSize="16px" color="white">Terms of Use</ListItem>

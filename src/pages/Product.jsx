@@ -6,7 +6,7 @@ const Product = () => {
     const data=useLoaderData();
     const [addToCart, setAddToCart] = useState(false)
     return (
-        <div className='grid '>
+        <div className='grid container mt-6'>
             <div className='p-2 shadow-md flex gap-10'>
                 <img src={data.image} alt={data.title} style={{ width: "250px", height: "250px" }} className='m-auto col-span-2' />
                 <div className='col-span-4'>
@@ -21,7 +21,6 @@ const Product = () => {
                         }
                     </div>
                 </div>
-
             </div>
         </div>
     )
