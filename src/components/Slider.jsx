@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const images = [
   "https://res.cloudinary.com/demo/image/upload/v1652345767/docs/demo_image2.jpg",
@@ -32,13 +30,13 @@ const Slider = () => {
         className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2"
         onClick={prevSlide}
       >
-        <FontAwesomeIcon icon={faChevronLeft} />
+        {"<"}
       </button>
       <button
         className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2"
         onClick={nextSlide}
       >
-        <FontAwesomeIcon icon={faChevronRight} />
+        {">"}
       </button>
     </div>
   );
