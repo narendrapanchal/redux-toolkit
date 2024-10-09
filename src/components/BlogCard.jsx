@@ -8,7 +8,7 @@ function BlogCard({ id, title }) {
         {title}
       </h2>
       <Link to={"/blogs/article/" + id} className="text-blue-400 text-sm ">
-        Read More..
+        Read More...
       </Link>
     </div>
   );

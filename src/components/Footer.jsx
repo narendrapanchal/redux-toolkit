@@ -8,7 +8,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 export const Footer = () => {
 	return (
-		<Box backgroundColor="black" padding="50px 0" color="fff" position="relative" >
+		<Box backgroundColor="black" padding="50px 0" color="fff" position="relative" className="mt-6">
 			<Box display="flex" alignItems="center" flexDirection="column" width="100%" maxWidth="1200px"
 				margin="0 auto" padding="0 20px"
 				justifyContent="center"className="container"

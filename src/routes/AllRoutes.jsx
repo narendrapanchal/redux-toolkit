@@ -8,6 +8,7 @@ import Blogs from '../pages/Blogs';
 import Article from '../pages/Article';
 import Login from '../pages/login/Login';
 import { SignUp } from '../pages/login/SignUp';
+import Authentication from '../components/HOC/Authentication';
 import HasAuth from '../components/HOC/HasAuth';
 import Cart from '../pages/Cart';
 
@@ -78,7 +79,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/cart",
-                element: <Cart />
+                element: <><Cart /></>
             },
             {
                 path: "/login",

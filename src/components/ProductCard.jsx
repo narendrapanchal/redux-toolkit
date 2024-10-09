@@ -1,17 +1,24 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import { cart } from '../store/slicers/cartSlicer';
 
 const ProductCard = ({ id, title, price, image }) => {
-  const handleAdd=(data)=>{
-    // Add product to local storage or API call here
-    let localData=JSON.parse(localStorage.getItem('cart'))||[];
-    const productIndex=localData.findIndex((product)=>product.id===data.id);
-    if(productIndex===-1){
-      localData.push({...data,quantity:1});
+  const { loggedIn } = useSelector(state => state.auth);
+  const dispatch=useDispatch();
+  const cartItems=useSelector(cart);
+  console.log("cartItems",cartItems)
+
+
+  const handleAdd = (data) => {
+    let localData = JSON.parse(localStorage.getItem('cart')) || [];
+    const productIndex = localData.findIndex((product) => product.id === data.id);
+    if (productIndex === -1) {
+      localData.push({ ...data, quantity: 1 });
       localStorage.setItem('cart', JSON.stringify(localData))
-    }else{
-      localData[productIndex].quantity+=1;
-      localStorage.setItem('cart',JSON.stringify(localData));
+    } else {
+      localData[productIndex].quantity += 1;
+      localStorage.setItem('cart', JSON.stringify(localData));
     }
   }
   const [addToCart, setAddToCart] = useState(false);
@@ -25,7 +32,11 @@ const ProductCard = ({ id, title, price, image }) => {
       <div className='flex justify-between mt-2 '>
         <p className='text-1xl font-bold leading-9' >${price}</p>
         {!addToCart ? <button className='bg-green-700 w-32 text-white font-bold p-2 rounded text-1xl' onClick={((e) => {
-          e.stopPropagation()
+          e.stopPropagation();
+          if (!loggedIn) {
+            navigate("/login")
+            return;
+          }
           setAddToCart(true)
           handleAdd({ id, title, price, image })
         })}>Add to Cart</button> : <button onClick={(e) => {
