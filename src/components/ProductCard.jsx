@@ -2,6 +2,18 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const ProductCard = ({ id, title, price, image }) => {
+  const handleAdd=(data)=>{
+    // Add product to local storage or API call here
+    let localData=JSON.parse(localStorage.getItem('cart'))||[];
+    const productIndex=localData.findIndex((product)=>product.id===data.id);
+    if(productIndex===-1){
+      localData.push({...data,quantity:1});
+      localStorage.setItem('cart', JSON.stringify(localData))
+    }else{
+      localData[productIndex].quantity+=1;
+      localStorage.setItem('cart',JSON.stringify(localData));
+    }
+  }
   const [addToCart, setAddToCart] = useState(false);
   const navigate = useNavigate();
   return (
@@ -15,6 +27,7 @@ const ProductCard = ({ id, title, price, image }) => {
         {!addToCart ? <button className='bg-green-700 w-32 text-white font-bold p-2 rounded text-1xl' onClick={((e) => {
           e.stopPropagation()
           setAddToCart(true)
+          handleAdd({ id, title, price, image })
         })}>Add to Cart</button> : <button onClick={(e) => {
           e.stopPropagation();
           navigate("/cart")

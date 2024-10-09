@@ -5,12 +5,11 @@ import HomeRoute from '../pages/HomeRoute';
 import Home from '../pages/Home';
 import ProductWrapper from '../pages/ProductWrapper';
 import Blogs from '../pages/Blogs';
-import ContactUs from '../pages/ContactUs';
 import Article from '../pages/Article';
 import Login from '../pages/login/Login';
 import { SignUp } from '../pages/login/SignUp';
-import Authentication from '../components/HOC/Authentication';
 import HasAuth from '../components/HOC/HasAuth';
+import Cart from '../pages/Cart';
 
 
 export const fetchData= async(url)=>{
@@ -78,8 +77,8 @@ const router = createBrowserRouter([
                 ]
             },
             {
-                path: "/contact",
-                element: <ContactUs />
+                path: "/cart",
+                element: <Cart />
             },
             {
                 path: "/login",
