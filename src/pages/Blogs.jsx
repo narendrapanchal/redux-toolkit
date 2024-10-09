@@ -2,22 +2,26 @@ import  { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import BlogCard from "../components/BlogCard";
 import { fetchPosts } from "../routes/AllRoutes";
+import { useDispatch, useSelector } from "react-redux";
+import { blog, fetchBlogList } from "../store/slicers/blogSlicer";
 
 const Blogs = () => {
-  const [data, setData] = useState([]);
+  const data=useSelector(blog);
+  const dispatch=useDispatch();
   const { id } = useParams();
   useEffect(() => {
-    (async () => {
-      const response = await fetchPosts(10, +id);
-      setData(response);
-    })();
+    dispatch(fetchBlogList({limit:10,page:id}))
   }, [id]);
+  if(data.loading){
+    return <div>Loading...</div>
+  }
   return (
     <div className="container">
-      {data?.data?.length > 0 &&
-        data?.data?.map((blog) => <BlogCard {...blog} key={blog.id} />)}
+      
+      {
+        data.blog?.data.map((blog) => <BlogCard {...blog} key={blog.id} />)}
       <div className="p-2 gap-1 flex justify-center">
-        {new Array(data.pages).fill(0).map((_, ind) => (
+        {new Array(data?.blog?.pages).fill(0).map((_, ind) => (
           <Link
             key={"Blog " + (ind + 1)}
             to={"/blogs/" + (+ind + 1)}

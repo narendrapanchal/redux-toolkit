@@ -8,13 +8,12 @@ import {
 	Button,
 	Select,
 } from "@chakra-ui/react";
-import { FiLogIn, FiShoppingCart, FiGrid, FiFileText } from "react-icons/fi";
-import authSlicer, { logout, userstatus } from "../store/slicers/authSlicer";
+import { FiShoppingCart, FiGrid, FiFileText } from "react-icons/fi";
+import  { logout, userstatus } from "../store/slicers/authSlicer";
 import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
 	const user = useSelector(userstatus);
-	console.log(user);
 	const dispatch = useDispatch();
 	return (
 		<Box bg="black" color="white" height="50px" boxShadow="md">
