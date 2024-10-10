@@ -83,7 +83,6 @@ function Header() {
 					</Button>
 					<Select
 						onChange={handlecurrencychange}
-						placeholder="Select Currency"
 						backgroundColor="transparent"
 						color="white"
 						size="10px"
