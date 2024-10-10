@@ -41,7 +41,7 @@ const ProductCard = ({ id, title, price, image }) => {
         if (currency.currencydata.conversion_rates) {
             setDisplayPrice(priceWithSign(price));
         }
-    }, [currency.currentcurrency, price, currency.currencydata]);
+    }, [currency.currentcurrency]);
 
     return (
         <div className='p-2 py-4 shadow-md max-w-full' onClick={() => navigate(`/products/${id}`)}>
