@@ -70,7 +70,7 @@ const ProductCard = ({ id, title, price, image, rating }) => {
             <h2 className='text-2xl font-bold text-left mt-1 truncate whitespace-nowrap overflow-hidden'>{title}</h2>
             <div className='flex mt-2'>
                 <div className='flex items-center'>
-                    {renderStars(rating.rate)}
+                    {renderStars(rating)}
                 </div>
             </div>
             <div className='flex justify-between mt-2'>
