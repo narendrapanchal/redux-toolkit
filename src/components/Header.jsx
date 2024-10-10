@@ -19,7 +19,6 @@ function Header() {
 	const currencydata = useSelector(selectCurrency);
 	const handlecurrencychange = (e) => {
 		dispatch(setcurrentcurrency(e.target.value));
-		// currencydata.currentcurrency = e.target.value;
 	}
 	return (
 		<Box bg="black" color="white" height="50px" boxShadow="md">
@@ -29,14 +28,14 @@ function Header() {
 						Ecommerce
 					</ChakraLink>
 				</Heading>
-				<Stack direction="row" spacing={13} align="center">
+				<Stack direction="row" spacing={17} align="center">
 					<ChakraLink
 						color="white"
 						as={Link}
 						to="/products"
 						_hover={{ textDecoration: 'underline', color: 'gray.300' }}
 					>
-						<Flex align="center">
+						<Flex align="center" fontSize={20}>
 							<FiGrid />
 							<Box ml={1}>Products</Box>
 						</Flex>
@@ -47,7 +46,7 @@ function Header() {
 						to="/blogs/1/"
 						_hover={{ textDecoration: 'underline', color: 'gray.300' }}
 					>
-						<Flex align="center">
+						<Flex align="center" fontSize={20}>
 							<FiFileText />
 							<Box ml={1}>Blog</Box>
 						</Flex>
@@ -58,7 +57,7 @@ function Header() {
 						to="/cart"
 						_hover={{ textDecoration: 'underline', color: 'gray.300' }}
 					>
-						<Flex align="center">
+						<Flex align="center" fontSize={20}>
 							<FiShoppingCart />
 							<Box ml={1}>Cart</Box>
 						</Flex>
@@ -71,30 +70,36 @@ function Header() {
 						_hover={{ bg: "teal.500" }}
 					>
 						{!user && <ChakraLink color="white" as={Link} to="/login">
-							<Flex align="center">
+							<Flex align="center" fontSize={20}>
 								<Box ml={1}>Log In</Box>
 							</Flex>
 						</ChakraLink>}
 						{user &&
 							<ChakraLink color="white" as={Link} to="/">
-								<Flex align="center">
+								<Flex align="center" fontSize={20}>
 									<Button onClick={() => dispatch(logout())} ml={1}>Log Out</Button>
 								</Flex>
 							</ChakraLink>}
 					</Button>
 					<Select
-						onClick={(e) => handlecurrencychange(e)}
+						onChange={handlecurrencychange}
 						placeholder="Select Currency"
-						backgroundColor="white"
-						color="black"
-						size="sm"
+						backgroundColor="transparent"
+						color="white"
+						size="10px"
 						variant="outline"
 						_hover={{ borderColor: "teal.300" }}
+						width="auto" 
+						fontSize={18}
+						defaultValue="USD"
+						fontStyle='bold'
+						icon='none'
 					>
-						<option value="INR">INR</option>
 						<option value="USD">USD</option>
+						<option value="INR">INR</option>
 						<option value="AUD">AUD</option>
 					</Select>
+
 				</Stack>
 			</Flex>
 		</Box>

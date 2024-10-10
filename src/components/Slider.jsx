@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const images = [
   "https://res.cloudinary.com/demo/image/upload/v1652345767/docs/demo_image2.jpg",
@@ -16,6 +16,13 @@ const Slider = () => {
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(nextSlide, 3000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []); 
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -43,3 +50,4 @@ const Slider = () => {
 }
 
 export default Slider;
+

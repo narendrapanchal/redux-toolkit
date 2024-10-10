@@ -4,6 +4,7 @@ import ProductCard from '../components/ProductCard'
 import Slider from '../components/Slider'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProductData, product } from '../store/slicers/productSlicer'
+import { Text } from '@chakra-ui/react'
 
 const Home = () => {
     const dispatch=useDispatch();

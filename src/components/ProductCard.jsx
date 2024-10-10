@@ -48,7 +48,7 @@ const ProductCard = ({ id, title, price, image }) => {
             <img src={image} alt={title} style={{ width: "250px", height: "250px" }} className='m-auto' />
             <h2 className='text-2xl font-bold text-left mt-1 truncate whitespace-nowrap overflow-hidden'>{title}</h2>
             <div className='flex justify-between mt-2'>
-                <p className='text-1xl font-bold leading-9'>{displayprice}</p>
+                <p className='text-2xl font-bold leading-9  '>{displayprice}</p>
                 {!(cartItems?.items?.some((product) => product.id === id)) ? (
                     <button className='bg-green-700 w-32 text-white font-bold p-2 rounded text-1xl' onClick={(e) => {
                         e.stopPropagation();
