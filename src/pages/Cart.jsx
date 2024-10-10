@@ -13,6 +13,7 @@ function Cart() {
         dispatch(handleCartDelete({ id }));
 
     }
+    
     return (
         <div className='container'>
             <div>
