@@ -1,0 +1,4 @@
+BASE URL: https://ecommerce-api-8ga2.onrender.com
+
+ENDPOINTS:
+all products: /api/product

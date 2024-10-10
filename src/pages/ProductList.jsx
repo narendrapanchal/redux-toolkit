@@ -16,7 +16,7 @@ const  ProductList=()=> {
   }
   return (
     <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-10 container'>
-      {products?.product.map((product,index)=><ProductCard {...product} key={product.id}/>)}
+      {products?.product?.length>0&&products?.product.map((product,index)=><ProductCard {...product} key={product.id}/>)}
     </div>
   )
 }

@@ -88,7 +88,7 @@ function Header() {
 						size="10px"
 						variant="outline"
 						_hover={{ borderColor: "teal.300" }}
-						width="auto" 
+						className="header-select"
 						fontSize={18}
 						defaultValue="USD"
 						fontStyle='bold'

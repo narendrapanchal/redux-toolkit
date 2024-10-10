@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard'; 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { cart, addToCart } from '../store/slicers/cartSlicer';
 import { fetchProductData, product } from '../store/slicers/productSlicer';
@@ -9,10 +9,12 @@ import { fetchCurrencyData, selectCurrency } from '../store/slicers/exchangeSlic
 const Product = () => {
     const cartItems = useSelector(cart);
     const dispatch = useDispatch();
+    const { loggedIn } = useSelector(state => state.auth);
     const data = useSelector(product);
     const currency = useSelector(selectCurrency);
     const { id } = useParams();
     const [displayPrice, setDisplayPrice] = useState(``);
+    const navigate=useNavigate()
 
     useEffect(() => {
         dispatch(fetchProductData(`https://fakestoreapi.com/products/${id}`));
@@ -66,6 +68,10 @@ const Product = () => {
                                 className='bg-green-700 w-32 text-white font-bold p-2 rounded text-1xl'
                                 onClick={(e) => {
                                     e.stopPropagation();
+                                    if (!loggedIn) {
+                                        navigate("/login");
+                                        return;
+                                    }
                                     dispatch(addToCart({ ...data.product, quantity: 1 })); 
                                 }}
                             >
