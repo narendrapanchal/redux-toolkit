@@ -9,12 +9,18 @@ import {
 	Select,
 } from "@chakra-ui/react";
 import { FiShoppingCart, FiGrid, FiFileText } from "react-icons/fi";
-import  { logout, userstatus } from "../store/slicers/authSlicer";
+import { logout, userstatus } from "../store/slicers/authSlicer";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchCurrencyData, selectCurrency, setcurrentcurrency } from "../store/slicers/exchangeSlice";
 
 function Header() {
 	const user = useSelector(userstatus);
 	const dispatch = useDispatch();
+	const currencydata = useSelector(selectCurrency);
+	const handlecurrencychange = (e) => {
+		dispatch(setcurrentcurrency(e.target.value));
+		// currencydata.currentcurrency = e.target.value;
+	}
 	return (
 		<Box bg="black" color="white" height="50px" boxShadow="md">
 			<Flex py={4} align="center" justify="space-between" className="container">
@@ -70,12 +76,15 @@ function Header() {
 							</Flex>
 						</ChakraLink>}
 						{user &&
-							<Flex align="center">
-								<Button onClick={() => dispatch(logout())} ml={1}>Log Out</Button>
-							</Flex>}
+							<ChakraLink color="white" as={Link} to="/">
+								<Flex align="center">
+									<Button onClick={() => dispatch(logout())} ml={1}>Log Out</Button>
+								</Flex>
+							</ChakraLink>}
 					</Button>
 					<Select
-						placeholder="Select An Option"
+						onClick={(e) => handlecurrencychange(e)}
+						placeholder="Select Currency"
 						backgroundColor="white"
 						color="black"
 						size="sm"

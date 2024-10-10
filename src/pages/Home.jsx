@@ -19,7 +19,7 @@ const Home = () => {
     <div>
       <Slider />
       <div className='grid mt-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-10 container'>
-        {data?.product?.map((product, index) => <ProductCard {...product} key={product.id} />)}
+        {data?.product?.length >0 && data?.product?.map((product, index) => <ProductCard {...product} key={product.id} />)}
       </div>
     </div>
   )
