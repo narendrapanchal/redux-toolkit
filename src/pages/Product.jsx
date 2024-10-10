@@ -10,14 +10,20 @@ const Product = () => {
     const cartItems = useSelector(cart);
     const dispatch = useDispatch();
     const { loggedIn } = useSelector(state => state.auth);
-    const data = useSelector(product);
+    const temp = useSelector(product);
+    const tempProduct={
+        title:temp.product.name,image:temp.product.url,id:temp.product._id,
+        price:temp.product.price
+    }
+    const data={...temp,product:tempProduct}
     const currency = useSelector(selectCurrency);
     const { id } = useParams();
     const [displayPrice, setDisplayPrice] = useState(``);
     const navigate=useNavigate()
 
     useEffect(() => {
-        dispatch(fetchProductData(`https://fakestoreapi.com/products/${id}`));
+        console.log(`https://ecommerce-api-8ga2.onrender.com/api/product/${id}`)
+        dispatch(fetchProductData(`https://ecommerce-api-8ga2.onrender.com/api/product/${id}`));
     }, [id, dispatch]);
 
     useEffect(() => {

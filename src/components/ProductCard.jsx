@@ -12,7 +12,7 @@ const ProductCard = ({ id, title, price, image, rating }) => {
     const currency = useSelector(selectCurrency);
 
     const [displayPrice, setDisplayPrice] = useState(`$${price}`);
-
+    console.log(displayPrice)
     useEffect(() => {
         dispatch(fetchCurrencyData());
     }, [dispatch]);

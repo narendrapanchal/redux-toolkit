@@ -32,10 +32,10 @@ const productSlice=createSlice({
         builder.addCase(fetchProductData.fulfilled,(state,action)=>{
             state.product=action.payload;
             state.loading=false;
-            state.brands=Object.keys(action.payload.reduce((acc,product)=>{
+            state.brands=Object.keys(action?.payload.length>0?action?.payload.reduce((acc,product)=>{
                 acc[product.brand]=1
                 return acc;
-            },{}))
+            },{}):[])
         })
         builder.addCase(fetchProductData.pending,(state,action)=>{
             state.loading=true;
