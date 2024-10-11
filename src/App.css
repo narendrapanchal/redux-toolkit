@@ -17,3 +17,12 @@
 .header-select{
   width: 60px;
 }
+
+.product-card {
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for transform and shadow */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}

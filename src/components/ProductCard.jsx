@@ -12,11 +12,11 @@ const ProductCard = ({ id, title, price, image, rating }) => {
     const currency = useSelector(selectCurrency);
 
     const [displayPrice, setDisplayPrice] = useState(`$${price}`);
-    console.log(displayPrice)
+    
     useEffect(() => {
         dispatch(fetchCurrencyData());
-    }, [dispatch]);
-
+    }, []);
+    
     const priceWithSign = (price) => {
         let sign = "";
         if (currency.currentcurrency === 'USD') {
@@ -31,22 +31,21 @@ const ProductCard = ({ id, title, price, image, rating }) => {
         let newPrice = (price * conversionRate).toFixed(2);
         return sign + newPrice;
     };
-
+    
     useEffect(() => {
         if (currency.currencydata.conversion_rates) {
             setDisplayPrice(priceWithSign(price));
         }
-    }, [currency.currentcurrency, price]);
-
+    }, [currency.currentcurrency]);
+    
     const handleAdd = (data) => {
         dispatch(addToCart(data));
     };
 
-
     const renderStars = (rating) => {
         const maxStars = 5;
         const fullStars = Math.floor(rating);
-        const halfStars = rating % 1 >= 0.5 ? 1 : 0;
+        const halfStars = 0;
         const stars = [];
 
         for (let i = 0; i < fullStars; i++) {
@@ -65,7 +64,7 @@ const ProductCard = ({ id, title, price, image, rating }) => {
     };
 
     return (
-        <div className='p-2 py-4 shadow-md max-w-full' onClick={() => navigate(`/products/${id}`)}>
+        <div className='product-card p-2 py-4 shadow-md max-w-full' onClick={() => navigate(`/products/${id}`)}>
             <img src={image} alt={title} style={{ width: "250px", height: "250px" }} className='m-auto' />
             <h2 className='text-2xl font-bold text-left mt-1 truncate whitespace-nowrap overflow-hidden'>{title}</h2>
             <div className='flex mt-2'>
@@ -100,4 +99,3 @@ const ProductCard = ({ id, title, price, image, rating }) => {
 };
 
 export default ProductCard;
-

@@ -16,10 +16,15 @@ import { fetchCurrencyData, selectCurrency, setcurrentcurrency } from "../store/
 function Header() {
 	const user = useSelector(userstatus);
 	const dispatch = useDispatch();
-	const currencydata = useSelector(selectCurrency);
+	const currency = useSelector(selectCurrency);
+
 	const handlecurrencychange = (e) => {
+		
 		dispatch(setcurrentcurrency(e.target.value));
-	}
+	};
+
+	const defaultCurrency = currency.currencydata ? currency.currencydata : "USD";
+
 	return (
 		<Box bg="black" color="white" height="50px" boxShadow="md">
 			<Flex py={4} align="center" justify="space-between" className="container">
@@ -51,17 +56,19 @@ function Header() {
 							<Box ml={1}>Blog</Box>
 						</Flex>
 					</ChakraLink>
-					{user && <ChakraLink
-						color="white"
-						as={Link}
-						to="/cart"
-						_hover={{ textDecoration: 'underline', color: 'gray.300' }}
-					>
-						<Flex align="center" fontSize={20}>
-							<FiShoppingCart />
-							<Box ml={1}>Cart</Box>
-						</Flex>
-					</ChakraLink>}
+					{user && (
+						<ChakraLink
+							color="white"
+							as={Link}
+							to="/cart"
+							_hover={{ textDecoration: 'underline', color: 'gray.300' }}
+						>
+							<Flex align="center" fontSize={20}>
+								<FiShoppingCart />
+								<Box ml={1}>Cart</Box>
+							</Flex>
+						</ChakraLink>
+					)}
 
 					<Button
 						colorScheme="teal"
@@ -69,20 +76,28 @@ function Header() {
 						size="sm"
 						_hover={{ bg: "teal.500" }}
 					>
-						{!user && <ChakraLink color="white" as={Link} to="/login">
-							<Flex align="center" fontSize={20}>
-								<Box ml={1}>Log In</Box>
-							</Flex>
-						</ChakraLink>}
-						{user &&
+						{!user ? (
+							<ChakraLink color="white" as={Link} to="/login">
+								<Flex align="center" fontSize={20}>
+									<Box ml={1}>Log In</Box>
+								</Flex>
+							</ChakraLink>
+						) : (
 							<ChakraLink color="white" as={Link} to="/">
 								<Flex align="center" fontSize={20}>
 									<Button onClick={() => dispatch(logout())} ml={1}>Log Out</Button>
 								</Flex>
-							</ChakraLink>}
+							</ChakraLink>
+						)}
 					</Button>
 					<Select
-						onChange={handlecurrencychange}
+						onChange={(e)=>{
+							if(currency.currencydata.length==0){
+								e.target.value="USD";
+							}else{
+
+								handlecurrencychange}}
+							}
 						backgroundColor="transparent"
 						color="white"
 						size="10px"
@@ -90,7 +105,7 @@ function Header() {
 						_hover={{ borderColor: "teal.300" }}
 						className="header-select"
 						fontSize={18}
-						defaultValue="USD"
+						defaultValue={defaultCurrency} 
 						fontStyle='bold'
 						icon='none'
 					>

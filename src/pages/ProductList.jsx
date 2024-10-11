@@ -41,26 +41,29 @@ const ProductList = () => {
   return (
     <>
       <div className="flex flex-col items-center mb-5">
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="mb-2 p-2 border border-gray-300 rounded"
-        >
-          <option value="">All Categories</option>
-          {products?.categories?.map(({ category }) => (
-            <option key={category} value={category}>{category}</option>
-          ))}
-        </select>
-        <select
-          value={brand}
-          onChange={(e) => setBrand(e.target.value)}
-          className="p-2 border border-gray-300 rounded mb-2"
-        >
-          <option value="">All Brands</option>
-          {products?.brands?.map((brand) => (
-            <option key={brand} value={brand}>{brand}</option>
-          ))}
-        </select>
+        <div className='flex items-center gap-20 m-5'>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="mb-2 p-2 border border-gray-300 rounded"
+          >
+            <option value="">All Categories</option>
+            {products?.categories?.map(({ category }) => (
+              <option key={category} value={category}>{category}</option>
+            ))}
+          </select>
+          <select
+            value={brand}
+            onChange={(e) => setBrand(e.target.value)}
+            className="p-2 border border-gray-300 rounded mb-2"
+          >
+            <option value="">All Brands</option>
+            {products?.brands?.map((brand) => (
+              <option key={brand} value={brand}>{brand}</option>
+            ))}
+          </select>
+
+        </div>
         <div className="flex space-x-2 mb-2">
           <input
             type="number"
@@ -72,7 +75,7 @@ const ProductList = () => {
           <input
             type="number"
             placeholder="Max Price"
-            value={maxPrice}
+            value={maxPrice?maxPrice:minPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
             className="p-2 border border-gray-300 rounded"
           />
@@ -82,11 +85,11 @@ const ProductList = () => {
         {filteredProducts?.length > 0 ? (
           filteredProducts.map((product) => (
             <ProductCard
-            {...product}
+              {...product}
               key={product._id}
               title={product.name}
               image={product.url}
-              rating={product.ratings?.[0]?.star || 0} 
+              rating={product.ratings?.[0]?.star || 0}
               id={product._id}
             />
           ))

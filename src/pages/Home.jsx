@@ -16,7 +16,7 @@ const Home = () => {
     if(data.loading){
       return <div>Loading...</div>
     }
-    console.log("data-------",data)
+    // console.log("data-------",data)
   return (
     <div>
       <Slider />
