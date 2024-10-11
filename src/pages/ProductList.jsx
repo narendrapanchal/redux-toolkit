@@ -89,7 +89,7 @@ const ProductList = () => {
               key={product._id}
               title={product.name}
               image={product.url}
-              rating={product.ratings?.[0]?.star || 0}
+              rating={product?.product?.ratings!=null?product?.product?.ratings[0].star:0} 
               id={product._id}
             />
           ))
