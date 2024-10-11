@@ -13,7 +13,8 @@ const Product = () => {
     const temp = useSelector(product);
     const tempProduct={
         title:temp.product.name,image:temp.product.url,id:temp.product._id,
-        price:temp.product.price
+        price:temp.product.price,
+        description:temp.product.description
     }
     const data={...temp,product:tempProduct}
     const currency = useSelector(selectCurrency);
@@ -56,13 +57,13 @@ const Product = () => {
     }
 
     return (
-        <div className='grid container mt-6'>
-            <div className='p-2 shadow-md flex gap-10'>
+        <div className='container mt-6   '>
+            <div className='p-2 shadow-md flex justify-start gap-10'>
                 <img
                     src={data.product.image}
                     alt={data.product.title}
                     style={{ width: '250px', height: '250px' }}
-                    className='m-auto col-span-2'
+                    className=' col-span-2'
                 />
                 <div className='col-span-4'>
                     <h2 className='text-2xl font-bold text-left mt-1 truncate whitespace-nowrap overflow-hidden'>{data.product.title}</h2>
