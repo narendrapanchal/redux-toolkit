@@ -4,18 +4,18 @@ import { doSignInWithEmailAndPassword } from "../../context/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { notify } from "../../utils/helper";
 import { ToastContainer } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/slicers/authSlicer";
-
+import {loginUser, user } from "../../store/slicers/userSlicer";
 function Login() {
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const userData=useSelector(user);
 
 	const signIn = async (email, password) => {
 		try {
-			await doSignInWithEmailAndPassword(email, password);
-			dispatch(login({email,password}));
+			await dispatch(loginUser({email, password,role:"user"}));
 			notify("Logged In!");
 			navigate('/');
 		} catch (error) {

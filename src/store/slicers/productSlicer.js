@@ -10,7 +10,7 @@ export const fetchProductData=createAsyncThunk(
     }
 )
 export const fetchProductCategory=createAsyncThunk(
-    'product/fetchProductCAtegories',
+    'product/fetchProductCategories',
     async(url='https://ecommerce-api-8ga2.onrender.com/api/product/categories/all')=>{
         const response=await fetch(url);
         const data= await response.json();  

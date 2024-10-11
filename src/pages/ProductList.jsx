@@ -40,8 +40,8 @@ const ProductList = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center mb-5">
-        <div className='flex items-center gap-20 m-5'>
+      <div className="flex flex-col items-end mb-5">
+        <div className='flex items-center gap-20 justify-end container mt-5'>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -62,9 +62,8 @@ const ProductList = () => {
               <option key={brand} value={brand}>{brand}</option>
             ))}
           </select>
-
         </div>
-        <div className="flex space-x-2 mb-2">
+        <div className="flex space-x-2 mb-2 justify-end container">
           <input
             type="number"
             placeholder="Min Price"
@@ -75,7 +74,7 @@ const ProductList = () => {
           <input
             type="number"
             placeholder="Max Price"
-            value={maxPrice?maxPrice:minPrice}
+            value={maxPrice ? maxPrice : minPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
             className="p-2 border border-gray-300 rounded"
           />
@@ -89,7 +88,7 @@ const ProductList = () => {
               key={product._id}
               title={product.name}
               image={product.url}
-              rating={product?.product?.ratings!=null?product?.product?.ratings[0].star:0} 
+              rating={product?.product?.ratings != null ? product?.product?.ratings[0].star : 0} 
               id={product._id}
             />
           ))
